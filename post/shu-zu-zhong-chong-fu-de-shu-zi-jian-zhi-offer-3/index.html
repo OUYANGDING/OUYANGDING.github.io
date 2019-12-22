@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>About Me | 不惘</title>
+<title>数组中重复的数字（剑指offer-3） | 不惘</title>
 <meta name="description" content="热爱可抵岁月漫长" />
 <link rel="shortcut icon" href="https://ouyangding.top/favicon.ico?v=1577034629629">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -85,31 +85,90 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              About Me
+              数组中重复的数字（剑指offer-3）
             </h2>
             <div class="post-info">
               <span>
-                2019-01-23
+                2019-12-22
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
+              
+                <a href="https://ouyangding.top/tag/_h49x1Iu7" class="post-tag">
+                  # 剑指offer
+                </a>
               
             </div>
             
+              <img class="post-feature-image" src="https://ouyangding.top/post-images/shu-zu-zhong-chong-fu-de-shu-zi-jian-zhi-offer-3.jpeg" alt="">
+            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>🏢SYSU SMIEr<br>
-🏬UoE AI</p>
+                <p>在一个长度为 n 的数组里的所有数字都在 0 到 n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字是重复的，也不知道每个数字重复几次。请找出数组中任意一个重复的数字。</p>
+<!-- more -->
+<h2 id="题目链接">题目链接</h2>
+<p><a href="https://www.nowcoder.com/practice/623a5ac0ea5b4e5f95552655361ae0a8?tpId=13&amp;tqId=11203&amp;tPage=1&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking&amp;from=cyc_github">数组中重复的数字</a></p>
+<h2 id="题目实例">题目实例</h2>
+<pre><code class="language-html">Input:
+{2, 3, 1, 0, 2, 5}
+
+Output:
+2
+</code></pre>
+<h2 id="解题思路">解题思路</h2>
+<p>要求时间复杂度 O(N)，空间复杂度 O(1)。因此不能使用排序的方法，也不能使用额外的标记数组。</p>
+<p>对于这种数组元素在 [0, n-1] 范围内的问题，可以将值为 i 的元素调整到第 i 个位置上进行求解。本题要求找出重复的数字，因此在调整过程中，如果第 i 位置上已经有一个值为 i 的元素，就可以知道 i 值重复。</p>
+<p>以 (2, 3, 1, 0, 2, 5) 为例，遍历到位置 4 时，该位置上的数为 2，但是第 2 个位置上已经有一个 2 的值了，因此可以知道 2 重复：</p>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/643b6f18-f933-4ac5-aa7a-e304dbd7fe49.gif" width="350px"> </div><br>
+<pre><code class="language-java">public boolean duplicate(int[] nums, int length, int[] duplication) {
+    if (nums == null || length &lt;= 0)
+        return false;
+    for (int i = 0; i &lt; length; i++) {
+        while (nums[i] != i) {
+            if (nums[i] == nums[nums[i]]) {
+                duplication[0] = nums[i];
+                return true;
+            }
+            swap(nums, i, nums[i]);
+        }
+    }
+    return false;
+}
+
+private void swap(int[] nums, int i, int j) {
+    int t = nums[i];
+    nums[i] = nums[j];
+    nums[j] = t;
+}
+</code></pre>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5">题目链接</a></li>
+<li><a href="#%E9%A2%98%E7%9B%AE%E5%AE%9E%E4%BE%8B">题目实例</a></li>
+<li><a href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF">解题思路</a></li>
+</ul>
+</li>
+</ul>
+
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://ouyangding.top/post/hello-world">
+              <h3 class="post-title">
+                Hello World
+              </h3>
+            </a>
+          </div>
         
 
         
