@@ -2,11 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ouyangding.top</id>
     <title>不惘</title>
-    <updated>2020-02-05T15:49:46.521Z</updated>
+    <updated>2020-02-05T15:50:49.935Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ouyangding.top"/>
     <link rel="self" href="https://ouyangding.top/atom.xml"/>
-    <subtitle>热爱可抵岁月漫长</subtitle>
     <logo>https://ouyangding.top/images/avatar.png</logo>
     <icon>https://ouyangding.top/favicon.ico</icon>
     <rights>All rights reserved 2020, 不惘</rights>
