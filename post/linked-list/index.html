@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>UoE | 不惘</title>
+<title>Linked List | 不惘</title>
 <link rel="shortcut icon" href="https://ouyangding.top/favicon.ico?v=1594728187093">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://ouyangding.top/styles/main.css">
@@ -30,11 +30,11 @@
 
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -83,80 +83,73 @@
         </div>
     </div>
 </nav>
-        <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #UoE
-            </h2>
-        </div>
-        <div class="post-list-container">
-    <div class="post-inner">
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://ouyangding.top/post/the-human-factor-working-with-users">
-                            <span class="post-title gt-c-content-color-first">The human factor: Working with Users</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-02-21 ·
-                        </time>
-                        
-                            <a href="https://ouyangding.top/tag/nKx4PNI0a" class="post-tag">
-                                # UoE
-                            </a>
-                        
-                    </div>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Linked List
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-05-16 ·
+                    </time>
+                    
                 </div>
-                
-                    <a href="https://ouyangding.top/post/the-human-factor-working-with-users" class="post-feature-image"
-                       style="background-image: url('https://ouyangding.top/post-images/the-human-factor-working-with-users.jpeg')">
-                    </a>
-                
-            </div>
-        
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://ouyangding.top/post/hello-world">
-                            <span class="post-title gt-c-content-color-first">Hello World</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        <p>hello world!<br>
-🤡🤠🤓🐛🐛🐛</p>
+                <div class="post-content">
+                    <h2 id="11-链表的基本结构">1.1 链表的基本结构</h2>
+<p>链表是通过一个个节点组成的，每个节点都包含了称为cargo的基本单元，它也是一种递归的数据结构。它能保持数据之间的逻辑顺序，但存储空间不必按照顺序存储。<br>
+链表的基本元素有：</p>
+<ol>
+<li>节点：每个节点有两个部分，左边部分称为值域，用来存放用户数据；右边部分称为指针域，用来存放指向下一个元素的指针。</li>
+<li>head:head节点永远指向第一个节点</li>
+<li>tail: tail永远指向最后一个节点</li>
+<li>None:链表中最后一个节点的指针域为None值</li>
+</ol>
+<h2 id="12-节点类和链表节点的定义">1.2 节点类和链表节点的定义</h2>
+<pre><code class="language-python">class Node:
+​    def __init__(self,cargo = None, next = None):
+​        self.cargo = cargo
+​        self.next = next
+​    def __str__(self):
+​        return str(self.cargo)
+print Node(&quot;text&quot;)
+</code></pre>
+<p>链表怎么定义呢？<br>
+我们可以先定义一个一个节点，如下：</p>
+<pre><code class="language-python">node1 = Node(1)
+node2 = Node(2)
+node3 = Node(3)
+</code></pre>
+<p>然后再把每个节点的关系表示出来:</p>
+<pre><code class="language-python">node1.next = node2 
+node2.next = node3
+</code></pre>
+<h2 id="13-顺序打印和逆序打印">1.3 顺序打印和逆序打印</h2>
+<p>可以通过输入第一个节点，循环整个链表然后顺序打印整个链表。</p>
+<pre><code class="language-python">def printlist(node):
+    while node:
+        print node
+        node = node.next
+def printBackward(node):
+    if node == None:return
+    printBackward(node.next)
+    print node
+</code></pre>
 
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2019-12-20 ·
-                        </time>
-                        
-                            <a href="https://ouyangding.top/tag/nKx4PNI0a" class="post-tag">
-                                # UoE
-                            </a>
-                        
-                    </div>
                 </div>
-                
-                    <a href="https://ouyangding.top/post/hello-world" class="post-feature-image"
-                       style="background-image: url('https://ouyangding.top/post-images/hello-world.jpeg')">
-                    </a>
-                
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://ouyangding.top/post/the-human-factor-working-with-users" class="post-title gt-a-link">
+                    The human factor: Working with Users
+                </a>
             </div>
         
-    </div>
-</div>
-        <div class="pagination-container">
-    
-    
-</div>
+
+        
 
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first"></div>
@@ -181,6 +174,7 @@
 <script>
     hljs.initHighlightingOnLoad()
 </script>
+
 
     </div>
 </div>

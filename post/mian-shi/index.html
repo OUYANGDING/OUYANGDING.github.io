@@ -1,0 +1,950 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>面试 | 不惘</title>
+<link rel="shortcut icon" href="https://ouyangding.top/favicon.ico?v=1594728187093">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://ouyangding.top/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<script src="media/scripts/index.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            不惘
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            Home
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            Archives
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            Tags
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="https://ouyangding.top/post/about/" class="menu gt-a-link">
+                            About me
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    面试
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2020-07-14 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="1逻辑回归"><strong>1.逻辑回归：</strong></h3>
+<p><strong>· 对数几率：</strong></p>
+<p>一个事件发生的几率（odds）是指该事件发生的概率与该事件不发生的概率的比值</p>
+<p>在LR模型中，输出y=1的对数几率是输入x的线性函数，或者说输出y=1的对数几率是由输入x的线形函数表示的模型</p>
+<p>逻辑回归假设数据服从伯努利分布，通过极大化似然函数的方法，运用梯度下降来求解参数，来达到将数据二分类的目的</p>
+<h5 id="逻辑回归的假设"><strong>· 逻辑回归的假设</strong></h5>
+<p>伯努利分布：是一个离散型概率分布，若成功，则随机变量取值1；若失败，随机变量取值为0。成功概率记为p，失败为q = 1-p。</p>
+<p>在逻辑回归中，既然假设了数据分布服从伯努利分布，那就存在一个成功和失败，对应二分类问题就是正类和负类，那么就应该有一个样本为正类的概率，和样本为负类的概率。</p>
+<h5 id="逻辑回归的损失函数"><strong>· 逻辑回归的损失函数</strong></h5>
+<p><strong>极大似然估计</strong>：利用已知的样本结果信息，反推最具有可能（最大概率）导致这些样本结果出现的模型参数值（模型已定，参数未知）</p>
+<h5 id="逻辑回归的求解方法"><strong>· 逻辑回归的求解方法</strong></h5>
+<p>梯度下降法</p>
+<h5 id="逻辑回归为什么用极大似然函数作为损失函数"><strong>· 逻辑回归为什么用极大似然函数作为损失函数</strong></h5>
+<p>一般和平方损失函数（最小二乘法）拿来比较，因为线性回归用的就是平方损失函数，原因就是平方损失函数加上sigmoid的函数将会是一个非凸的函数，不易求解，会得到局部解，用对数似然函数得到高阶连续可导凸函数，可以得到最优解。其次，是因为对数损失函数更新起来很快，因为只和x，y有关，和sigmoid本身的梯度无关。</p>
+<h5 id="优缺点"><strong>· 优缺点</strong></h5>
+<p>优点：</p>
+<ul>
+<li>形式简单，模型的可解释性非常好。从特征的权重可以看到不同的特征对最后结果的影响，某个特征的权重值比较高，那么这个特征最后对结果的影响会比较大。</li>
+<li>模型效果不错。在工程上是可以接受的（作为baseline)，如果特征工程做的好，效果不会太差，并且特征工程可以大家并行开发，大大加快开发的速度。</li>
+<li>训练速度较快。分类的时候，计算量仅仅只和特征的数目相关。并且逻辑回归的分布式优化sgd发展比较成熟，训练的速度可以通过堆机器进一步提高，这样我们可以在短时间内迭代好几个版本的模型。</li>
+<li>资源占用小,尤其是内存。因为只需要存储各个维度的特征值。</li>
+<li>方便输出结果调整。逻辑回归可以很方便的得到最后的分类结果，因为输出的是每个样本的概率分数，我们可以很容易的对这些概率分数进行cut off，也就是划分阈值(大于某个阈值的是一类，小于某个阈值的是一类)。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>
+<p>准确率并不是很高。因为形式非常的简单(非常类似线性模型)，很难去拟合数据的真实分布。</p>
+</li>
+<li>
+<p>很难处理数据不平衡的问题。举个例子：如果我们对于一个正负样本非常不平衡的问题比如正负样本比 10000:1.我们把所有样本都预测为正也能使损失函数的值比较小。但是作为一个分类器，它对正负样本的区分能力不会很好。</p>
+</li>
+<li>
+<p>处理非线性数据较麻烦。逻辑回归在不引入其他方法的情况下，只能处理线性可分的数据，或者进一步说，处理二分类的问题 。</p>
+</li>
+<li>
+<p>逻辑回归本身无法筛选特征。有时候，我们会用gbdt来筛选特征，然后再上逻辑回归。</p>
+</li>
+</ul>
+<h3 id="2-svm"><strong>2. SVM：</strong></h3>
+<p>SVM 是一种二类分类模型。它的基本思想是在特征空间中寻找间隔最大的分离超平面使数据得到高效的二分类，具体来讲，有三种情况（不加核函数的话就是个线性模型，加了之后才会升级为一个非线性模型）：</p>
+<ul>
+<li>当训练样本线性可分时，通过硬间隔最大化，学习一个线性分类器，即线性可分支持向量机；</li>
+<li>当训练数据近似线性可分时，引入松弛变量，通过软间隔最大化，学习一个线性分类器，即线性支持向量机；</li>
+<li>当训练数据线性不可分时，通过使用核技巧及软间隔最大化，学习非线性支持向量机。</li>
+</ul>
+<h5 id="svm为什么采用间隔最大化与感知机的区别"><strong>SVM为什么采用间隔最大化（与感知机的区别）</strong></h5>
+<p>当训练数据线性可分时，存在无穷个分离超平面可以将两类数据正确分开。感知机利用误分类最小策略，求得分离超平面，不过此时的解有无穷多个。线性可分支持向量机利用间隔最大化求得最优分离超平面，这时，解是唯一的。另一方面，此时的分隔超平面所产生的分类结果是最鲁棒的，对未知实例的泛化能力最强。</p>
+<h5 id="为什么要引入核函数"><strong>为什么要引入核函数</strong></h5>
+<p>当样本在原始空间线性不可分时，可将样本从原始空间映射到一个更高维的特征空间，使得样本在这个特征空间内线性可分。而引入这样的映射后，所要求解的对偶问题的求解中，无需求解真正的映射函数，而只需要知道其核函数。核函数的定义：K(x,y)=&lt;ϕ(x),ϕ(y)&gt;，即在特征空间的内积等于它们在原始样本空间中通过核函数 K 计算的结果。一方面数据变成了高维空间中线性可分的数据，另一方面不需要求解具体的映射函数，只需要给定具体的核函数即可，这样使得求解的难度大大降低。</p>
+<p><strong>核函数就是一个函数，接收两个变量，这两个变量是在低维空间中的变量，而核函数求的值等于将两个低维空间中的向量映射到高维空间后的内积。</strong></p>
+<p>核函数选择：</p>
+<ul>
+<li>当特征维数 超过样本数 时 (文本分类问题通常是这种情况), 使用线性核;</li>
+<li>当特征维数 比较小. 样本数 中等时, 使用RBF核;</li>
+<li>当特征维数 比较小. 样本数 特别大时, 支持向量机性能通常不如深度神经网络</li>
+</ul>
+<h5 id="svm优缺点"><strong>SVM优缺点：</strong></h5>
+<p>优点：</p>
+<ul>
+<li>由于SVM是一个凸优化问题，所以求得的解一定是全局最优而不是局部最优。</li>
+<li>不仅适用于线性线性问题还适用于非线性问题(用核技巧)。</li>
+<li>拥有高维样本空间的数据也能用SVM，这是因为数据集的复杂度只取决于支持向量而不是数据集的维度，这在某种意义上避免了“维数灾难”。</li>
+<li>理论基础比较完善(例如神经网络就更像一个黑盒子)。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>二次规划问题求解将涉及m阶矩阵的计算(m为样本的个数), 因此SVM不适用于超大数据集。(SMO算法可以缓解这个问题)</li>
+<li>只适用于二分类问题。(SVM的推广SVR也适用于回归问题；可以通过多个SVM的组合来解决多分类问题)</li>
+</ul>
+<p><strong>LR和SVM的区别：</strong></p>
+<p>两种方法都是常见的分类算法，从目标函数来看，区别在于逻辑回归采用的是logistical loss，svm采用的是hinge loss。这两个损失函数的目的都是增加对分类影响较大的数据点的权重，减少与分类关系较小的数据点的权重。SVM的处理方法是只考虑support vectors，也就是和分类最相关的少数点，去学习分类器。而逻辑回归通过非线性映射，大大减小了离分类平面较远的点的权重，相对提升了与分类最相关的数据点的权重。两者的根本目的都是一样的。此外，根据需要，两个方法都可以增加不同的正则化项，如l1,l2等等。所以在很多实验中，两种算法的结果是很接近的。但是逻辑回归相对来说模型更简单，好理解，实现起来，特别是大规模线性分类时比较方便。而SVM的理解和优化相对来说复杂一些。但是SVM的理论基础更加牢固，有一套结构化风险最小化的理论基础，虽然一般使用的人不太会去关注。还有很重要的一点，SVM转化为对偶问题后，分类只需要计算与少数几个支持向量的距离，这个在进行复杂核函数计算时优势很明显，能够大大简化模型和计算量。</p>
+<p>联系：（1）分类（二分类） （2）可加入正则化项</p>
+<p>区别：（1）LR–参数模型；SVM–非参数模型？</p>
+<p>（2）目标函数：LR—logistical loss；SVM–hinge loss</p>
+<p>（3）SVM–support vectors；LR–减少较远点的权重</p>
+<p>（4）LR–模型简单，好理解，精度低，可能局部最优；SVM–理解、优化复杂，精度高，全局最优，转化为对偶问题—&gt;简化模型和计算</p>
+<p>（5）LR可以做的SVM可以做（线性可分），SVM能做的LR不一定能做（线性不可分）</p>
+<h3 id="3-决策树"><strong>3. 决策树</strong></h3>
+<p>决策树通常有三个步骤：特征选择、决策树的生成、决策树的修剪。</p>
+<p>用决策树分类：从根节点开始，对实例的某一特征进行测试，根据测试结果将实例分配到其子节点，此时每个子节点对应着该特征的一个取值，如此递归的对实例进行测试并分配，直到到达叶节点，最后将实例分到叶节点的类中。</p>
+<p>决策树学习的目标：根据给定的训练数据集构建一个决策树模型，使它能够对实例进行正确的分类。</p>
+<p>决策树学习的本质：从训练集中归纳出一组分类规则，或者说是由训练数据集估计条件概率模型。</p>
+<p>决策树学习的损失函数：正则化的极大似然函数</p>
+<p>决策树学习的测试：最小化损失函数</p>
+<p>决策树学习的目标：在损失函数的意义下，选择最优决策树的问题。</p>
+<p><strong>决策树的特点：</strong></p>
+<ul>
+<li>优点：计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据。</li>
+<li>缺点：可能会产生过度匹配的问题</li>
+<li>适用数据类型：数值型和标称型</li>
+</ul>
+<p>确定当前数据集上的决定性特征，为了得到该决定性特征，必须评估每个特征，完成测试之后，原始数据集就被划分为几个数据子集，这些数据子集会分布在第一个决策点的所有分支上，如果某个分支下的数据属于同一类型，则当前无序阅读的垃圾邮件已经正确的划分数据分类，无需进一步对数据集进行分割，如果不属于同一类，则要重复划分数据子集，直到所有相同类型的数据均在一个数据子集内。</p>
+<p><strong>信息增益：</strong></p>
+<p>划分数据集的大原则是：将无序数据变得更加有序，但是各种方法都有各自的优缺点，信息论是量化处理信息的分支科学，在划分数据集前后信息发生的变化称为信息增益，获得信息增益最高的特征就是最好的选择，所以必须先学习如何计算信息增益，集合信息的度量方式称为香农熵，或者简称熵。</p>
+<p>当熵中的概率由数据估计(特别是最大似然估计)得到时，所对应的熵称为经验熵(empirical entropy)</p>
+<p>信息增益表示得知特征X的信息而使得类Y的信息不确定性减少的程度。</p>
+<p><strong>信息增益</strong>：信息增益是相对于特征而言的。所以，特征A对训练数据集D的信息增益g(D,A)，定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差。熵H(D)与条件熵H(D|A)之差成为互信息(mutual information)。决策树学习中的信息增益等价于训练数据集中类与特征的互信息。</p>
+<p><strong>信息增益比</strong>：特征A对训练数据集D的信息增益比定义为其信息增益与训练数据集D的经验熵之比</p>
+<h5 id="id3算法"><strong>ID3算法：</strong></h5>
+<p>ID3算法的核心是在决策树各个结点上对应信息增益准则选择特征，递归地构建决策树。</p>
+<p>具体方法是：</p>
+<p>1）从根结点(root node)开始，对结点计算所有可能的特征的信息增益，选择信息增益最大的特征作为结点的特征。</p>
+<p>2）由该特征的不同取值建立子节点，再对子结点递归地调用以上方法，构建决策树；直到所有特征的信息增益均很小或没有特征可以选择为止；</p>
+<p>3）最后得到一个决策树。</p>
+<h5 id="c45算法"><strong>C4.5算法：</strong></h5>
+<p>与ID3算法相似，但是做了改进，将信息增益比作为选择特征的标准。</p>
+<h4 id="决策树的剪枝"><strong>决策树的剪枝：</strong></h4>
+<p>过拟合产生的原因在于在学习时过多的考虑如何提高对训练数据的正确分类，从而构建出过于复杂的决策树，解决方法是考虑决策树的复杂度，对已经生成的树进行简化。</p>
+<p><strong>剪枝（pruning）</strong>：从已经生成的树上裁掉一些子树或叶节点，并将其根节点或父节点作为新的叶子节点，从而简化分类树模型。</p>
+<p>损失函数的极小化等价于正则化的极大似然估计</p>
+<p>Ca(T)=C(T)+a|T|</p>
+<p>其中，C(T)C(T)表示模型对训练数据的预测误差,即模型与训练数据的拟合程度，|T||T|表示模型复杂度，参数a≥0a≥0控制两者之间的影响。较大的aa促使选择较简单的模型，较小的aa促使选择较复杂的模型。a=0a=0意味着只考虑模型与训练数据的拟合程度，不考虑模型的复杂度。</p>
+<p>剪枝分为预剪枝与后剪枝。</p>
+<p>预剪枝是指在决策树的生成过程中，对每个节点在划分前先进行评估，若当前的划分不能带来泛化性能的提升，则停止划分，并将当前节点标记为叶节点。</p>
+<p>后剪枝是指先从训练集生成一颗完整的决策树，然后自底向上对非叶节点进行考察，若将该节点对应的子树替换为叶节点，能带来泛化性能的提升，则将该子树替换为叶节点。</p>
+<p><strong>在决策树算法中,ID3基于信息增益作为属性选择的度量, C4.5基于信息增益比作为属性选择的度量, CART基于基尼指数作为属性选择的度量</strong></p>
+<h5 id="cart"><strong>CART：</strong></h5>
+<p>分类树与回归树（classification and regression tree，CART）模型（Breiman）由特征选择、树生成及剪枝组成，既可用于分类也可用于回归。CART是在给定输入随机变量X条件下输出变量Y的条件概率分布的学习方法。它假定决策树是二叉树，内部取值为“是”（左分支）和“否”（右分支）。</p>
+<p>它的基本步骤为</p>
+<ul>
+<li>1）决策树生成：基于训练数据集生成决策树，生成的决策树要尽量大。</li>
+<li>2）决策树剪枝：用验证数据集对已生成的树进行剪枝并选择最优子树，这是用损失函数最小作为剪枝的标准。</li>
+</ul>
+<p><strong>分类树</strong>：对分类树用基尼系数（Gini index）最小化准则，进行特征选择，生成<strong>二叉树</strong>。</p>
+<p>具体算法步骤如下：</p>
+<ul>
+<li>1）设结点的训练数据集为D，计算现有特征对该数据集的基尼指数。此时，对每一个特征A，对其可能取的每个值aa，根据样本点对A=aA=a的测试为”是”或者“否”将D分割为D1D1和D2D2两部分，计算其基尼系数。</li>
+<li>2）在所有可能的特征A以及他们所有可能的切分点aa中，选择基尼系数最小的特征及其对应的切分点作为最优特征与最优切分点。依最优特征与最优切分点，从现结点生成两个子结点，将训练数据集依特征分配到两个子结点中去。</li>
+<li>3）对两个子结点递归地调用上述两个步骤，直至满足停止条件。</li>
+<li>4）生成CART决策树</li>
+</ul>
+<p><strong>回归树：</strong></p>
+<p>利用最小二乘回归树生成算法来生成回归树f(x)，求得在R1、R2内部使得平方损失误差达到最小值的c1、c2，每个切分点都计算得到的平方损失误差，然后在这两支上递推就完事儿了。</p>
+<p>CART剪枝</p>
+<p>这里我们用 <strong>代价复杂度剪枝</strong> Cost-Complexity Pruning(CCP) 方法来对 CART 进行剪枝。</p>
+<p>从整个树 T0 开始，先剪去一棵子树，生成子树 T1，<br>
+在 T1 上再剪去一棵子树，生成子树 T2，<br>
+重复这个操作，直到最后只剩下一个根节点的子树 Tn，<br>
+得到了子树序列 T0～Tn，<br>
+利用独立的验证数据集，计算每个子树的平方误差或者基尼指数，<br>
+选择误差最小的那个子树作为最优的剪枝后的树。</p>
+<h3 id="4-随机森林"><strong>4. 随机森林</strong></h3>
+<p>随机森林属于集成学习（Ensemble Learning）中的bagging算法。在集成学习中，主要分为bagging算法和boosting算法。我们先看看这两种方法的特点和区别。</p>
+<p><strong>Bagging（套袋法）</strong></p>
+<p>bagging的算法过程如下：</p>
+<p>从原始样本集中使用Bootstraping方法随机抽取n个训练样本，共进行k轮抽取，得到k个训练集。（k个训练集之间相互独立，元素可以有重复） 对于k个训练集，我们训练k个模型（这k个模型可以根据具体问题而定，比如决策树，knn等） 对于分类问题：由投票表决产生分类结果；对于回归问题：由k个模型预测结果的均值作为最后预测结果。（所有模型的重要性相同）</p>
+<p><strong>Boosting（提升法）</strong></p>
+<p>boosting的算法过程如下：</p>
+<p>对于训练集中的每个样本建立权值wi，表示对每个样本的关注度。当某个样本被误分类的概率很高时，需要加大对该样本的权值。进行迭代的过程中，每一步迭代都是一个弱分类器。我们需要用某种策略将其组合，作为最终模型。（例如AdaBoost给每个弱分类器一个权值，将其线性组合最为最终分类器。误差越小的弱分类器，权值越大）</p>
+<p><strong>Bagging，Boosting的主要区别：</strong></p>
+<p>样本选择上：Bagging采用的是Bootstrap随机有放回抽样；而Boosting每一轮的训练集是不变的，改变的只是每一个样本的权重。</p>
+<p>样本权重：Bagging使用的是均匀取样，每个样本权重相等；Boosting根据错误率调整样本权重，错误率越大的样本权重越大。</p>
+<p>预测函数：Bagging所有的预测函数的权重相等；Boosting中误差越小的预测函数其权重越大。</p>
+<p>并行计算：Bagging各个预测函数可以并行生成；Boosting各个预测函数必须按顺序迭代生成。</p>
+<p>下面是将决策树与这些算法框架进行结合所得到的新的算法：</p>
+<p>1）Bagging + 决策树 = 随机森林</p>
+<p>2）AdaBoost + 决策树 = 提升树</p>
+<p>3）Gradient Boosting + 决策树 = GBDT</p>
+<p>随机森林的优点：</p>
+<ul>
+<li>具有极高的准确率</li>
+<li>随机性的引入，使得随机森林不容易过拟合</li>
+<li>随机性的引入，使得随机森林有很好的抗噪声能力</li>
+<li>能处理很高维度的数据，并且不用做特征选择</li>
+<li>既能处理离散型数据，也能处理连续型数据，数据集无需规范化</li>
+<li>训练速度快，可以得到变量重要性排序</li>
+<li>容易实现并行化</li>
+</ul>
+<p>随机森林的缺点：</p>
+<p>当随机森林中的决策树个数很多时，训练时需要的空间和时间会较大。随机森林模型还有许多不好解释的地方，有点算个黑盒模型</p>
+<p>与上面介绍的Bagging过程相似，随机森林的构建过程大致如下：</p>
+<ul>
+<li>1）如果训练集大小为N，对于每棵树而言，随机且有放回地从训练集中抽取N个训练样本（bootstrap抽样方法），作为该树的训练集；每棵树的训练集都是不同的，但里面包含重复的训练样本</li>
+<li>2）如果每个样本的特征维度为M，指定一个常数m，且m&lt;M，随机地从M个特征中选取m个特征子集，每次树进行分裂时，从这m个特征中选择最优的；</li>
+<li>3）每棵树都尽可能最大程度地生长，并且没有剪枝过程。</li>
+</ul>
+<p>减小特征选择个数m，树的相关性和分类能力也会相应的降低；增大m，两者也会随之增大。所以关键问题是如何选择最优的m（或者是范围），这也是随机森林唯一的一个参数。</p>
+<p>使用袋外数据来检测模型的泛化能力：</p>
+<p>**袋外错误率（oob error）**计算方式如下：</p>
+<ul>
+<li>1）对每个样本计算它作为oob样本的树对它的分类情况</li>
+<li>2）以简单多数投票作为该样本的分类结果</li>
+<li>3）最后用误分个数占样本总数的比率作为随机森林的oob误分率</li>
+</ul>
+<h3 id="5-gbdt"><strong>5. GBDT</strong></h3>
+<p>GBDT（Gradient Boosting Decision Tree）是一种迭代的决策树算法，又叫 MART（Multiple Additive Regression Tree)，它通过构造一组弱的学习器（树），并把多颗决策树的结果累加起来作为最终的预测输出。该算法将决策树与集成思想进行了有效的结合。</p>
+<p><strong>Regression Desicion Tree：回归树</strong></p>
+<p>和上面的cart一样</p>
+<p><strong>Boosting Decision Tree：提升树</strong></p>
+<p>提升方法采用加法模型（即基函数的线性组合）与前向分布算法。</p>
+<p>当采用平方误差损失函数时，每一棵回归树学习的是之前所有树的结论和残差，拟合得到一个当前的残差回归树，残差的意义如公式：残差 = 真实值 - 预测值 。提升树即是整个迭代过程生成的回归树的累加。</p>
+<p>对比初始的回归树与GBDT所生成的回归树，可以发现，最终的结果是相同的，那我们为什么还要使用GBDT呢？</p>
+<ul>
+<li>答案就是对模型过拟合的考虑。过拟合是指为了让训练集精度更高，学到了很多“仅在训练集上成立的规律”，导致换一个数据集后，当前规律的预测精度就不足以使人满意了。毕竟，在训练精度和实际精度（或测试精度）之间，后者才是我们想要真正得到的。</li>
+</ul>
+<p><strong>梯度提升决策树</strong></p>
+<p>利用最速下降的近似方法，即利用损失函数的负梯度在当前模型的值作为回归问题中提升树算法的残差的近似值（与其说负梯度作为残差的近似值，不如说残差是负梯度的一种特例，拟合一个回归树），这就是梯度提升决策树。</p>
+<p>对于平方损失函数，它就是通常所说的残差；对于一般损失函数，它就是残差的近似值。</p>
+<h3 id="6-adaboost"><strong>6. AdaBoost</strong></h3>
+<p>有两个问题需要回答：一是在每一轮如果改变训练数据的权值或概率分布；二是如何将弱分类器组合成一个强分类器。对于第一个问题，AdaBoost的做法是，提高那些被前一轮弱分类器错误分类样本的权值，而降低那些被正确分类样本的权值。这样一来，那些没有得到正确分类的数据，由于其权值的加大而受到后一轮的弱分类器的更大关注，于是，分类问题就被一系列的弱分类器“分而治之”。至于第二个问题，即弱分类器的组合，AdaBoost采取加权多数表决的方法。具体地，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率较大的弱分类器的权值，使其在表决中起较小的作用。</p>
+<p>整个AdaBoost算法包括以下三个步骤：</p>
+<ul>
+<li>1）**初始化训练样本的权值分布。**如果有N个样本，则每一个训练样本最开始时都被赋予相同的权值：1/N1/N。</li>
+<li>2）**训练弱分类器。**具体训练过程中，如果某个样本已经被准确地分类，那么在构造下一个训练集中，它的权值就会被降低；相反，如果某个样本点没有被准确地分类，那么它的权值就得到提高。然后，权值更新过的样本被用于训练下一个分类器，整个训练过程如果迭代地进行下去，使得分类器在迭代过程中逐步改进。</li>
+<li>3）<strong>将各个训练得到的弱分类器组合成强分类器</strong>。各个弱分类器的训练过程结束后，加大分类误差率小的弱分类器的权重，使其在最终的分类函数中起着较大的决定作用，而降低分类误差率大的弱分类器的权重，使其在最终的分类函数中起着较小的决定作用。换言之，误差率低的弱分类器在最终分类器中权重较大，否则较小。得到最终分类器。</li>
+</ul>
+<p><strong>Adaboost的训练误差是以指数速率下降的。</strong></p>
+<ol>
+<li><strong>Adaboost与GBDT两者boosting的不同策略是两者的本质区别。</strong></li>
+<li>Adaboost强调Adaptive（自适应），通过不断修改样本权重（增大分错样本权重，降低分对样本权重），不断加入弱分类器进行boosting。</li>
+<li>而GBDT则是旨在不断减少残差（回归），通过不断加入新的树旨在在残差减少（负梯度）的方向上建立一个新的模型。——即<strong>损失函数是旨在最快速度降低残差</strong>。</li>
+</ol>
+<h3 id="7-xgboost"><strong>7. XGBoost</strong></h3>
+<p>对于每次扩展，我们依旧要枚举所有可能的方案。对于某个特定的分割，我们要计算出这个分割的左子树的导数和和右子数导数和之和（就是下图中的第一个红色方框），然后和划分前的进行比较（基于损失，看分割后的损失和分割前的损失有没有发生变化，变化了多少）。遍历所有分割，选择变化最大的作为最合适的分割。</p>
+<p>乍一看目标函数的计算与回归树的结构qq函数没有什么关系，但是如果我们仔细回看目标函数的构成，就会发现其中GjGj和HjHj的取值是由第jj个树叶上数据样本所决定的。而第jj个树上所具有的数据样本则是由树结构qq函数决定的。也就是说，一旦回归树的结构qq确定，那么相应的目标函数就能够根据上式计算出来。那么回归树的生成问题也就转换为找到一个最优的树结构qq，使得它具有最小的目标函数。</p>
+<p>贪心法，求增益</p>
+<p>可以设置树的最大深度、当样本权重和小于设定阈值时停止生长去防止过拟合。</p>
+<p><strong>GBDT和XGBoost区别：</strong></p>
+<ul>
+<li>传统GBDT以CART作为基分类器，xgboost还支持线性分类器，这个时候xgboost相当于带L1和L2正则化项的逻辑斯蒂回归（分类问题）或者线性回归（回归问题）。</li>
+<li>传统GBDT在优化时只用到一阶导数信息，xgboost则对代价函数进行了二阶泰勒展开，同时用到了一阶和二阶导数。顺便提一下，xgboost工具支持自定义代价函数，只要函数可一阶和二阶求导。</li>
+<li>xgboost在代价函数里加入了正则项，用于控制模型的复杂度。正则项里包含了树的叶子节点个数、每个叶子节点上输出的score的L2模的平方和。从Bias-variance tradeoff角度来讲，正则项降低了模型的variance，使学习出来的模型更加简单，防止过拟合，这也是xgboost优于传统GBDT的一个特性。</li>
+<li>Shrinkage（缩减），相当于学习速率（xgboost中的eta）。xgboost在进行完一次迭代后，会将叶子节点的权重乘上该系数，主要是为了削弱每棵树的影响，让后面有更大的学习空间。实际应用中，一般把eta设置得小一点，然后迭代次数设置得大一点。（（<strong>防止过拟合</strong>））</li>
+<li>列抽样（column subsampling）。xgboost借鉴了随机森林的做法，支持列抽样，不仅能降低过拟合，还能减少计算，这也是xgboost异于传统gbdt的一个特性。（<strong>防止过拟合</strong>）</li>
+<li>对缺失值的处理。对于特征的值有缺失的样本，xgboost可以自动学习出它的分裂方向。当样本的第i个特征值缺失时，无法利用该特征进行划分时，XGBoost的想法是将该样本分别划分到左结点和右结点，然后计算其增益，哪个大就划分到哪边。</li>
+<li>xgboost工具支持并行。boosting不是一种串行的结构吗?怎么并行的？注意xgboost的并行不是tree粒度的并行，xgboost也是一次迭代完才能进行下一次迭代的（第t次迭代的代价函数里包含了前面t-1次迭代的预测值）。xgboost的并行是在特征粒度上的。我们知道，决策树的学习最耗时的一个步骤就是对特征的值进行排序（因为要确定最佳分割点），xgboost在训练之前，预先对数据进行了排序，然后保存为block结构，后面的迭代中重复地使用这个结构，大大减小计算量。这个block结构也使得并行成为了可能，在进行节点的分裂时，需要计算每个特征的增益，最终选增益最大的那个特征去做分裂，那么各个特征的增益计算就可以开多线程进行。</li>
+<li>可并行的近似直方图算法。树节点在进行分裂时，我们需要计算每个特征的每个分割点对应的增益，即用贪心法枚举所有可能的分割点。当数据无法一次载入内存或者在分布式情况下，贪心算法效率就会变得很低，所以xgboost还提出了一种可并行的近似直方图算法，用于高效地生成候选的分割点。（<strong>分桶</strong>）</li>
+</ul>
+<h3 id="8-聚类"><strong>8. 聚类</strong></h3>
+<p><strong>k-means</strong></p>
+<p>k均值算法非常简单且使用广泛，但是其有主要的两个缺陷：</p>
+<ol>
+<li>K值需要预先给定，属于预先知识，很多情况下K值的估计是非常困难的，对于像计算全部微信用户的交往圈这样的场景就完全的没办法用K-Means进行。对于可以确定K值不会太大但不明确精确的K值的场景，可以进行迭代运算，然后找出Cost Function最小时所对应的K值，这个值往往能较好的描述有多少个簇类。</li>
+<li>K-Means算法对初始选取的聚类中心点是敏感的，不同的随机种子点得到的聚类结果完全不同</li>
+<li>K均值算法并不是很所有的数据类型。它不能处理非球形簇、不同尺寸和不同密度的簇，银冠指定足够大的簇的个数是他通常可以发现纯子簇。</li>
+<li>对离群点的数据进行聚类时，K均值也有问题，这种情况下，离群点检测和删除有很大的帮助。</li>
+<li>对噪声敏感</li>
+</ol>
+<p><strong>k-means++算法</strong>选择初始seeds的基本思想就是：初始的聚类中心之间的相互距离要尽可能的远。</p>
+<p><strong>密度聚类方法：DBSCAN方法</strong></p>
+<p>密度聚类方法的指导思想是，只要样本点的密度大于某阈值，则将该样本添加到最近的簇中。这类算法能克服基于距离的算法只能发现“类圆”（凸）的聚类的缺点，可发现任意形状的聚类，且对噪声数据不敏感。但计算密度单元的计算复杂度大，需要建立空间索引来降低计算量。</p>
+<p>DBCSAN（Density-Based Spatial Clustering of Applications with Noise）是一个比较有代表性的基于密度的聚类算法。与划分和层次聚类方法不同，它将簇定义为密度相连的点的最大集合，能够把具有足够高密度的区域划分为簇，并可在有“噪声”的数据中发现任意形状的聚类。</p>
+<h3 id="9-em算法"><strong>9. EM算法</strong></h3>
+<p>Jensen不等式：</p>
+<p>凹函数的公式: <strong>f(E[X]&gt;=*<em>E[f(X)]*</em></strong>)</p>
+<p>一般的EM算法的步骤如下：</p>
+<p>第一步：初始化分布参数θ；</p>
+<p>第二步：重复E步和M步直到收敛：</p>
+<ul>
+<li>E步：根据参数的初始值或上一次迭代的模型参数来计算出的因变量的后验概率（条件概率），其实就是隐变量的期望值，来作为隐变量的当前估计值</li>
+<li>M步：最大化似然函数从而获得新的参数值</li>
+</ul>
+<p>通过不断地迭代，然后就可以得到使似然函数L(θ)L(θ)最大化的参数θθ了。</p>
+<h3 id="10-评价指标"><strong>10. 评价指标</strong></h3>
+<ul>
+<li>
+<p>TP（true positive，真正）: 预测为正，实际为正</p>
+</li>
+<li>
+<p>FP（false positive，假正）: 预测为正，实际为负</p>
+</li>
+<li>
+<p>TN（true negative，真负）：预测为负，实际为负</p>
+</li>
+<li>
+<p>FN（false negative，假负）: 预测为负，实际为正</p>
+</li>
+<li>
+<p>ACC（accuracy，准确率）：ACC = (TP+TN)/(TP+TN+FN+FP)</p>
+</li>
+<li>
+<p>P（precision精确率、精准率、查准率P = TP/ (TP+FP)</p>
+</li>
+<li>
+<p>R（recall，召回率、查全率）： R = TP/ (TP+FN)</p>
+</li>
+<li>
+<p>TPR（true positive rate，，真正类率同召回率、查全率）：TPR = TP/ (TP+FN)</p>
+<p>注：Recall = TPR</p>
+<p>真正类率TPR代表分类器预测的正类中实际正实例占所有正实例的比例。</p>
+</li>
+<li>
+<p>FPR（false positive rate，假正类率）：FPR =FP/ (FP+TN)</p>
+</li>
+<li>
+<p>假正类率FPR代表分类器预测的正类中实际负实例占所有负实例的比例。</p>
+</li>
+<li>
+<p>F-Score: F-Score = (1+β^2) x (PxR) / (β^2x(P+R)) = 2xTP/(2xTP + FP + FN)</p>
+</li>
+<li>
+<p>当β=1是，F1-score = 2xPxR/(P+R)</p>
+</li>
+<li>
+<p>P-R曲线（precision-recall，查准率-查全率曲线）</p>
+</li>
+<li>
+<p>ROC曲线（receiver operating characteristic，接收者操作特征曲线）</p>
+</li>
+<li>
+<p>AUC（area under curve）值</p>
+</li>
+</ul>
+<p><strong>ROC曲线</strong></p>
+<p>横轴：负正类率(false postive rate FPR)</p>
+<p>纵轴：真正类率(true postive rate TPR)</p>
+<p>假设采用逻辑回归分类器，其给出针对每个实例为正类的概率，那么通过设定一个阈值如0.6，概率大于等于0.6的为正类，小于0.6的为负类。对应的就可以算出一组(FPR,TPR)，随着阈值的逐渐减小，越来越多的实例被划分为正类，但是这些正类中同样也掺杂着更多的负实例，即TPR和FPR会同时增大。阈值最大时，对应坐标点（0，0），阈值最小时，对应坐标点（1，1）。</p>
+<p><strong>AUC</strong></p>
+<p>首先AUC是一个概率值，当你随机挑选一个正样本以及负样本，当前的分类算法根据计算得到的Score值将这个正样本排在负样本前面的概率就是AUC值，AUC值越大，当前分类算法越有可能将正样本排在负样本前面，从而能够更好地分类。</p>
+<p>以下是根据AUC判断分类器优劣的标准：</p>
+<ul>
+<li>1）AUC=1，是完美分类器，采用这个预测模型时，存在至少一个阈值能得出完美预测。绝大多数场合，不存在完美的分类器。</li>
+<li>2）0.5&lt;AUC&lt;1，优于随机猜测。这个分类器妥善设定阈值的话，能有预测价值。</li>
+<li>3）AUC=0.5，跟随机猜测一样（如丢硬币），模型没有预测价值。</li>
+<li>4）AUC&lt;0.5，比随机猜测还差；但只要总是反预测而行，就优于随机猜测。</li>
+</ul>
+<p>我们为什么使用ROC曲线呢？</p>
+<p>既然已经有那么多的评价标准，为何还要使用ROC和AUC曲线呢？因为ROC曲线有个很好的特性：当测试集中的正负样本的分布变化的时候，ROC曲线能够保持不变。在实际的数据集中经常会出现非平衡数据的现象，即负样本比正样本多很多（或者相反），而且测试数据中的正负样本的分布也可能随着时间变化。</p>
+<h3 id="11-l1-l2正则化"><strong>11. L1、L2正则化</strong></h3>
+<p>当样本容量足够大的时候，经验风险最小化学习效果良好。比如极大似然估计，当模型是条件概率分布，损失函数是对数损失函数时，经验风险最小化就等价于极大似然估计。但是当样本容量很小时，经验风险最小化学习会产生过拟合（over-fitting）的现象。这就引出了结构风险最小化，它等价于正则化（regularization）</p>
+<p>我们需要关注的最主要是<strong>范数的「非负性」</strong>。我们刚才讲，损失函数通常是一个有下确界的函数。而这个性质保证了我们可以对损失函数做最优化求解。如果我们要保证目标函数依然可以做最优化求解，那么我们就必须让正则项也有一个下界。非负性无疑提供了这样的下界，而且它是一个下确界——由齐次性保证（当 c=0 时）。</p>
+<p><strong>L0与L1−正则项（LASSO regularizer）</strong></p>
+<p>预测目标背后的真实规律，可能只和某几个维度的特征有关；而其它维度的特征，要不然作用非常小，要不然纯粹是噪声。在这种情况下，除了这几个维度的特征对应的参数之外，其它维度的参数应该为零。若不然，则当其它维度的特征存在噪音时，模型的行为会发生预期之外的变化，导致过拟合。</p>
+<p>L0是NP问题，所以考虑L0范数最紧的凸放松L1范数</p>
+<p>因为ηγℓ1n&gt;0ηγℓ1n&gt;0所以多出的项ηγℓ1nsgn(wi)ηγℓ1nsgn(wi)使得wi→0wi→0，实现稀疏化。</p>
+<p><strong>L2正则</strong></p>
+<p>我们注意到，当多项式模型过拟合时，函数曲线倾向于靠近噪声点。这意味着，函数曲线会在噪声点之间来回扭曲跳跃。这也就是说，在某些局部，函数曲线的切线斜率会非常高（函数导数的绝对值非常大）。对于多项式模型来说，函数导数的绝对值，实际上就是多项式系数的一个线性加和。这也就是说，过拟合的多项式模型，它的参数的绝对值会非常大（至少某几个参数分量的绝对值非常大）。因此，如果我们有办法使得这些参数的值，比较稠密均匀地集中在0附近，就能有效地避免过拟合。</p>
+<p>引入L2−L2−正则项之后，相当于衰减了（decay）参数的权重，使参数趋近于0。</p>
+<h4 id="kl-散度和交叉熵的区别"><strong>KL 散度和交叉熵的区别：</strong></h4>
+<p>机器学习中，我们常常使用KL散度来评估predict和label之间的差别，但是由于KL散度的前半部分是一个常量，所以我们常常将后半部分的交叉熵作为损失函数，其实二者是一样的。</p>
+<h4 id="机器学习中的分类-回归和聚类模型有哪些"><strong>机器学习中的分类、回归和聚类模型有哪些？</strong></h4>
+<p>分类：LR、SVM、KNN、决策树、RandomForest、GBDT</p>
+<p>回归：non-Linear regression、SVR（支持向量回归--&gt;可用线性或高斯核（RBF））、随机森林</p>
+<p>聚类：Kmeans、层次聚类、GMM（高斯混合模型）、谱聚类</p>
+<h3 id="12-神经网络的优化方法"><strong>12. 神经网络的优化方法</strong></h3>
+<ol>
+<li>
+<p>BGD</p>
+<p>批量梯度下降法（Batch Gradient Descent，简称BGD）是梯度下降法最原始的形式，它的具体思路是在更新每一参数时都使用所有的样本来进行更新</p>
+<p>其优缺点如下：</p>
+<ul>
+<li>优点：全局最优解；易于并行实现；</li>
+<li>缺点：当样本量很大时，训练过程会很慢</li>
+</ul>
+</li>
+<li>
+<p>SGD</p>
+<p>由于批量梯度下降法在更新每一个参数时，都需要所有的训练样本，所以训练过程会随着样本数量的加大而变得异常缓慢。随机梯度下降法（Stochastic Gradient Descent，简称SGD）正是为了解决批量梯度下降法这一弊端而提出的。</p>
+<p>其优缺点如下：</p>
+<ul>
+<li>优点：训练速度快；</li>
+<li>缺点：准确度下降，并不是全局最优；不易于并行实现。</li>
+</ul>
+</li>
+</ol>
+<p>虽然梯度下降算法效果很好，并且被广泛的使用，但它存在着一些需要解决的问题：</p>
+<ul>
+<li>1）首先选择一个合适的学习速率很难。若学习速率过小，则会导致收敛速度很慢。如果学习速率过大，那么会阻碍收敛，即在极值点附近振荡</li>
+<li>2）学习速率调整（又称学习速率调度，Learning rate schedules）试图在每次更新过程中，改变学习速率，如模拟退火按照预先设定的调度算法或者当相邻的迭代中目标变化小于一个阈值时候减小学习速率。但是梯度下降算法的调度和阈值需要预先设置，无法对数据集特征进行自适应。</li>
+<li>3）模型所有的参数每次更新都是使用相同的学习速率。如果我们的数据很稀疏并且我们的特征出现的次数不同，我们可能不会希望所有的参数以某种相同的幅度进行更新，而是针对很少出现的特征进行一次大幅度更新。</li>
+<li>4）在神经网络中常见的极小化highly non-convex error functions的一个关键挑战是避免步入大量的suboptimal local minima。Dauphin等人认为实践中的困难来自saddle points而非local minima。这些saddle points（鞍点）经常被一个相等误差的平原包围，导致SGD很难摆脱，因为梯度在所有方向都近似于0。</li>
+</ul>
+<ol start="3">
+<li>
+<p>动量</p>
+<p>我们用物理上的动能势能转换来理解它。即物体在这一时刻的动能=物体在上一时刻的动能+上一时刻的势能差。由于有阻力和转换时的损失，所以两者都乘以一个系数。</p>
+<p>就像一个小球从坡上向下滚，当前的速度取决于上一时刻的速度和势能的改变量。这样在更新参数时，除了考虑到梯度以外，还考虑了上一时刻参数的历史变更幅度。例如，参数上一次更新幅度较大，并且梯度也较大，那么在更新时是不是得更加猛烈一些了。这样的启发式算法，从直观感知上确实有道理。</p>
+</li>
+<li>
+<p>Adagrad</p>
+<p>之前的方法中所有参数在更新时均使用同一个Learning rate。而Learning rate调整是一个非常耗费计算资源的过程，所以如果能够自适应地对参数进行调整的话，就大大降低了成本。在Adagrad的每一个参数的每一次更新中都使用不同的learning rate。</p>
+<p>实质上是对学习率形成了一个约束项regularizer：是对直至t次迭代的梯度平方和的累加和，ϵϵ是一个防止分母为0的很小的平滑项。不用平方根操作，算法性能会变差很多</p>
+<ul>
+<li>优点：Adagrad让学习速率自适应于参数，在前期gtgt较小的时候，regularizer较大，能够放大梯度；后期gtgt较大的时候，regularizer较小，能够约束梯度；因为这一点，它非常适合处理稀疏数据。Dean等人发现Adagrad大大地提高了SGD的鲁棒性并在谷歌的大规模神经网络训练中采用了它进行参数更新，其中包含了在Youtube视频中进行猫脸识别。此外，由于低频词（参数）需要更大幅度的更新，Pennington等人在GloVe word embeddings的训练中也采用了Adagrad。</li>
+<li>缺点：由公式可以看出，仍依赖于人工设置一个全局学习率；ηη设置过大的话，会使得regularizer过于敏感，对梯度的调节太大；中后期，分母上梯度平方的累加将会越来越大，使得梯度为0，训练提前结束。</li>
+</ul>
+</li>
+<li>
+<p>RMSprop</p>
+<p>它用了一种很简单的方式修改了Adagrad方法，让它不过于激进而过早停止学习。具体说来就是，它使用了一个梯度平方的滑动平均，仍然是基于梯度的大小来对每个权重的学习率进行修改，效果不错。但是和Adagrad不同的是，<strong>其更新不会让学习率单调变小</strong>。</p>
+</li>
+<li>
+<p>Adadelta</p>
+<p>Adadelta是Adagrad的一种扩展，以缓解Adagrad学习速率单调递减问题的算法。Adadelta不是对过去所有时刻的梯度平方进行累加，而是将累加时刻限制在窗口大小为的w区间。梯度累加没有采用简单的存储前w个时刻的梯度平方，而是递归地定义为过去所有时刻梯度平方的decaying average</p>
+<p>由于Adadelta更新规则中没有了学习速率这一项，我们甚至都不用对学习速率进行设置。</p>
+</li>
+<li>
+<p>Adam</p>
+<p>Adaptive Moment Estimation (Adam)是另外一种对每个参数进行自适应学习速率计算的方法，除了像Adadelta和RMSprop一样保存去过梯度平方和的exponentially decaying average外，Adam还保存类似momentum一样过去梯度的exponentially decaying average。它看起来像是RMSProp的动量版。</p>
+<p>mtmt和vtvt分别是分别是梯度的一阶矩（均值）和二阶距（偏方差）的估计，由于mtmt和vtvt由全零的向量来初始化，Adam的作者观察到他们会被偏向0，特别是在initial time steps或decay rates很小的时候（即β1β1和β2β2都接近于1）,于是他们通过计算bias-corrected一阶矩和二阶矩的估计低消掉偏差。</p>
+</li>
+<li>
+<p>二阶方法</p>
+<p>基于牛顿法。这里Hf(x)Hf(x)是Hessian矩阵，它是函数的二阶偏导数的平方矩阵。∇f(x)∇f(x)是梯度向量，这和梯度下降中一样。直观理解上，Hessian矩阵描述了损失函数的局部曲率，从而使得可以进行更高效的参数更新。具体来说，就是乘以Hessian转置矩阵可以让最优化过程在曲率小的时候大步前进，在曲率大的时候小步前进。需要重点注意的是，在这个公式中是没有学习率这个超参数的，这相较于一阶方法是一个巨大的优势。</p>
+<p>然而上述更新方法很难运用到实际的深度学习应用中去，这是因为计算（以及求逆）Hessian矩阵操作非常耗费时间和空间。</p>
+</li>
+</ol>
+<h3 id="13-cnn"><strong>13. CNN</strong></h3>
+<p>加入padding之后</p>
+<p>Nf=（N+2P−F）/S+1</p>
+<h3 id="14-batch-normalization"><strong>14. Batch Normalization</strong></h3>
+<p>Batch Normalization的基本思想其实很直观：因为深层神经网络在做非线性变换前的激活输入值（就是那个x=WU+B,U是输入）随着网络深度加深或者在训练过程中，其分布逐渐发生偏移或者变动，之所以收敛慢，一般是整体分布逐渐往非线性函数的取值区间的上下限两端靠近（对于Sigmoid函数来说，意味着激活输入值WU+B是大的负值或者正值），所以这导致反向传播的时候低层神经网络的梯度消失，这是训练深层神经网络收敛越来越慢的本质原因，而BN就是通过一定的规范化手段，对于每个隐层神经元，把逐渐向非线性函数映射后向取值区间极限饱和区靠拢的输入分布强制拉回到均值为0方差为1的比较标准的正态分布，使得非线性变换函数的输入值落入对输入比较敏感的区域，以此避免梯度消失问题。因为梯度一直都能保持比较大的状态，所以很明显对神经网络的参数调整效率比较高，就是变动大，就是说向损失函数最优值迈动的步子大，也就是说收敛地快。</p>
+<p>BN为了保证非线性的获得，对变换后的满足均值为0方差为1的x又进行了scale加上shift操作(y=scale*x+shift)，每个神经元增加了两个参数scale和shift参数，这两个参数是通过训练学习到的，意思是通过scale和shift把这个值从标准正态分布左移或者由移一点并长胖一点或者变瘦一点，每个实例挪动的程度不一样，这样等价于非线性函数的值从正中心周围的线性区往非线性区动了动，让因训练所需而“刻意”加入的BN能够有可能还原最初的输入。核心思想应该是想找到一个线性和非线性的较好平衡点，<strong>既能享受非线性的较强表达能力的好处，又避免太靠非线性区两头使得网络收敛速度太慢。从而保证整个网络的capacity。</strong></p>
+<p>论文中罗列了Batch Normalization的很多作用，一一列举如下：</p>
+<ul>
+<li>1）可以使用很高的学习率。如果每层的scale不一致，实际上每层需要的学习率是不一样的，同一层不同维度的scale往往也需要不同大小的学习率，通常需要使用最小的那个学习率才能保证损失函数有效下降，Batch Normalization</li>
+<li>2）移除或使用较低的dropout。dropout是常用的防止overfitting的方法，而导致overfitting的位置往往在数据边界处，如果初始化权重就已经落在数据内部，overfitting现象就可以得到一定的缓解。论文中最后的模型分别使用10%、5%和0%的dropout训练模型，与之前的40%~50%相比，可以大大提高训练速度。</li>
+<li>3） 降低L2权重衰减系数。 还是一样的问题，边界处的局部最优往往有几维的权重（斜率）较大，使用L2衰减可以缓解这一问题，现在用了Batch Normalization，就可以把这个值降低了，论文中降低为原来的5倍。</li>
+<li>4）取消Local Response Normalization层。 由于使用了一种Normalization，再使用LRN就显得没那么必要了。而且LRN实际上也没那么work。</li>
+<li>5）减少图像扭曲的使用。 由于现在训练epoch数降低，所以要对输入数据少做一些扭曲，让神经网络多看看真实的数据。</li>
+</ul>
+<p>说完BN的优势，自然可以知道什么时候用BN比较好。例如，在神经网络训练时遇到收敛速度很慢，或梯度爆炸等无法训练的状况时可以尝试BN来解决。另外，在一般使用情况下也可以加入BN来加快训练速度，提高模型精度。</p>
+<p>归一化层，目前主要有这几个方法，Batch Normalization（2015年）、Layer Normalization（2016年）、Instance Normalization（2017年）、Group Normalization（2018年）、Switchable Normalization（2018年）；</p>
+<p>将输入的图像shape记为[N, C, H, W]，这几个方法主要的区别就是在，</p>
+<ol>
+<li>batchNorm是在batch上，对NHW做归一化，对小batchsize效果不好；</li>
+<li>layerNorm在通道方向上，对CHW归一化，主要对RNN作用明显；</li>
+<li>instanceNorm在图像像素上，对HW做归一化，用在风格化迁移；</li>
+<li>GroupNorm将channel分组，然后再做归一化；</li>
+<li>SwitchableNorm是将BN、LN、IN结合，赋予权重，让网络自己去学习归一化层应该使用什么方法。</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdn.net/20180714183939113?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdXhpYW8yMTQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></figure>
+<p><strong>BN与LN的区别在于：</strong></p>
+<ul>
+<li>LN中同层神经元输入拥有相同的均值和方差，不同的输入样本有不同的均值和方差；</li>
+<li>BN中则针对不同神经元输入计算均值和方差，同一个batch中的输入拥有相同的均值和方差。</li>
+</ul>
+<h3 id="15-fm"><strong>15. FM</strong></h3>
+<p>综上可知，FM算法可以再线性时间内完成模型训练，以及对新样本作出预测，所以说FM是一个非常高效的模型。FM模型的核心作用可以概括为以下三个：</p>
+<ul>
+<li>1）FM降低了交叉项参数学习不充分的影响：one-hot编码后的样本数据非常稀疏，组合特征更是如此。为了解决交叉项参数学习不充分、导致模型有偏或不稳定的问题。作者借鉴矩阵分解的思路：每一维特征用k维的隐向量表示，交叉项的参数wijwij用对应特征隐向量的内积表示，即⟨vi,vj⟩⟨vi,vj⟩。这样参数学习由之前学习交叉项参数wijwij的过程，转变为学习nn个单特征对应k维隐向量的过程。很明显，单特征参数（k维隐向量vivi）的学习要比交叉项参数wijwij学习的更加充分。<strong>FM降低了因数据稀疏，导致交叉项参数学习不充分的影响。</strong></li>
+<li>2）FM提升了模型预估能力，即使样本中不存在交叉特征</li>
+<li>3）FM提升了参数学习效率，模型训练复杂度也由O(mn2)变为O(mnk)</li>
+</ul>
+<p><strong>FM模型对稀疏数据有更好的学习能力，通过交互项可以学习特征之间的关联关系，并且保证了学习效率和预估能力</strong>。</p>
+<ul>
+<li>FM是一种比较灵活的模型，通过合适的特征变换方式，FM可以模拟二阶多项式核的SVM模型、MF模型、SVD++模型等；</li>
+<li>相比SVM的二阶多项式核而言，FM在样本稀疏的情况下是有优势的；而且，FM的训练/预测复杂度是线性的，而二项多项式核SVM需要计算核矩阵，核矩阵复杂度就是N平方。</li>
+</ul>
+<h3 id="16激活函数"><strong>16.激活函数</strong></h3>
+<p>Bengio 教授等将具有</p>
+<ul>
+<li>1）在定义域内处处可导</li>
+<li>2）两侧导数逐渐趋近于0，即limx→∞f′(x)=0的激活函数定义为软饱和激活函数。</li>
+</ul>
+<p><strong>1. sigmoid：</strong><br>
+三个主要缺点：</p>
+<p>1）梯度消失。Sigmoid 的软饱和性，使得深度神经网络在二三十年里一直难以有效的训练，是阻碍神经网络发展的重要原因。具体地，我们知道优化神经网络的方法是Back Propagation，即导数的反向传递：先计算输出层对应的loss，然后将loss以导数的形式不断向上一层网络传递，修正相应的参数，达到降低loss的目的。sigmoid反向传导的梯度包含了一个f’(x) 因子（sigmoid关于输入的导数），因此一旦输入落入饱和区，f’(x) 就会变得接近于0，导致了向底层传递的梯度也变得非常小。此时，网络参数很难得到有效训练。这种现象被称为梯度消失。</p>
+<p>2）Sigmoid函数的输出不是Zero-centered的。这个性质并不是我们想要的，因为在神经网络后面层中的神经元得到的数据将不是零中心的。这一情况将影响梯度下降的运作，因为如果输入神经元的数据总是正数(比如在f=wTx+bf=wTx+b中每个元素都x&gt;0),那么关于w的梯度在反向传播的过程中，将会要么全部是正数，要么全部是负数（具体依整个表达式f而定）。这将会导致梯度下降权重更新时出现z字型的下降（如下图所示）。然而，可以看到整个批量的数据的梯度被加起来后，对于权重的最终更新将会有不同的正负，这样就从一定程度上减轻了这个问题。因此，该问题相对于上面的神经元饱和问题来说只是个小麻烦，没有那么严重。</p>
+<p>3）幂运算相对耗时：相对于前两项，这其实并不是一个大问题，我们目前是具备相应计算能力的，但面对深度学习中庞大的计算量，最好是能省则省。之后我们会看到，在ReLU函数中，需要做的仅仅是一个thresholding，相对于幂运算来讲会快很多。</p>
+<p><strong>2.tanh</strong></p>
+<p>但是和sigmoid神经元不同的是，它解决了zero-centered的输出问题，因此，在实际操作中，tanh非线性函数比sigmoid非线性函数更受欢迎。然而，gradient vanishing的问题和幂运算的问题仍然存在。</p>
+<p><strong>3.ReLU</strong></p>
+<p>ReLU(x)=max(0,x)</p>
+<p>几大优点：</p>
+<p>1）解决了gradient vanishing问题：ReLU在x&lt;0时硬饱和。由于x&gt;0时导数为1，所以，ReLU能够在x&gt;0时保持梯度不衰减，从而缓解梯度消失问题。</p>
+<p>2）计算速度非常快。对比sigmoid和tanh神经元含有指数运算等耗费计算资源的操作，ReLU可以简单地通过对一个矩阵进行阈值计算得到。</p>
+<p>3）收敛速度非常快。相较于sigmoid和tanh函数，ReLU对于随机梯度下降的收敛有巨大的加速作用。</p>
+<p>4）ReLU另外一个性质是提供神经网络的稀疏表达能力</p>
+<p>缺点：</p>
+<p>1）Dead ReLU Problem。随着训练的推进，部分输入会落入硬饱和区，某些神经元可能永远不会被激活，这个ReLU单元在训练中将不可逆转的死亡，导致相应的参数永远不能被更新，使得数据多样化丢失。这种现象被称为“神经元死亡”。有两个主要原因可能导致这种情况产生: (1) 非常不幸的参数初始化，这种情况比较少见 (2) learning rate太高导致在训练过程中参数更新太大，不幸使网络进入这种状态。例如，如果学习率设置得太高，可能会发现网络中40%的神经元都会死掉（在整个训练集中这些神经元都不会被激活）。解决方法是可以采用Xavier初始化方法，以及避免将learning rate设置太大或使用adagrad等自动调节learning rate的算法。</p>
+<p>2）偏移现象。即输出均值恒大于零。偏移现象和Dead ReLU Problem会共同影响网络的收敛性。</p>
+<p><strong>4.Leaky ReLU</strong></p>
+<p>f(x)=max(0.01x,x)</p>
+<p><strong>5.PReLU</strong></p>
+<p>f(x)=max(αx,x)</p>
+<p>PReLU是ReLU和LReLU的改进版本，具有非饱和性。与LReLU相比，PReLU中的负半轴斜率αα由back propagation学习而非固定。原文献建议初始化αα为0.25，不采用正则。</p>
+<p><strong>6.RReLU</strong></p>
+<p>数学形式与PReLU类似，但RReLU[9]是一种非确定性激活函数，其参数是随机的。这种随机性类似于一种噪声，能够在一定程度上起到正则效果。</p>
+<p><strong>7.Maxout</strong></p>
+<p>其发生饱和是一个零测集事件（measure zero event）</p>
+<p>Maxout网络能够近似任意连续函数，且Maxout是对ReLU和leaky ReLU的一般化归纳，当w2,b2,···,wn,bnw2,b2,···,wn,bn为0时，退化为ReLU。其实，Maxout的思想在视觉领域存在已久。例如，在HOG特征里有这么一个过程：计算三个通道的梯度强度，然后在每一个像素位置上，仅取三个通道中梯度强度最大的数值，最终形成一个通道。这其实就是Maxout的一种特例。</p>
+<p>所以Maxout神经元就拥有ReLU单元的所有优点（线性操作和不饱和，能够缓解梯度消失），而没有它的缺点（死亡的ReLU单元）。然而和ReLU对比，它每个神经元的参数数量增加了一倍，这就导致整体参数的数量激增。</p>
+<p><strong>8.ELU</strong></p>
+<p>ELU（Exponential Linear Units）非线性函数的数学公式为：</p>
+<p>f(x)=max(0,x)+α·min(0,exp(x)−1)</p>
+<p>ELU也是为解决ReLU存在的问题而提出，显然，ELU有ReLU的基本所有优点，并有自身的特点，罗列如下：</p>
+<ul>
+<li>1）右侧线性部分使得ELU能够缓解梯度消失，而左侧软饱和能够燃ELU对输入变换或噪声更加鲁棒。</li>
+<li>2）ELU的输出均值接近于零，即zero-centered，所以收敛速度更快。经ELU的作者实验，ELU的收敛性质的确优于ReLU和PReLU。在cifar10上，ELU 网络的loss 降低速度更快；在 ImageNet上，不加 Batch Normalization 30 层以上的 ReLU 网络会无法收敛，PReLU网络在MSRA的Fan-in （caffe ）初始化下会发散，而 ELU 网络在Fan-in/Fan-out下都能收敛 。</li>
+</ul>
+<p>它的一个小问题在于计算量稍大，类似于Leaky ReLU，理论上虽然好于ReLU，但在实际使用中目前并没有好的证据证明ELU总是优于ReLU。</p>
+<h3 id="17resnet"><strong>17.ResNet</strong></h3>
+<p><strong>深度网络的退化问题</strong></p>
+<p>从经验来看，网络的深度对模型的性能至关重要，当增加网络层数后，网络可以进行更加复杂的特征模式的提取，所以当模型更深时理论上可以取得更好的结果，从图2中也可以看出网络越深而效果越好的一个实践证据。但是更深的网络其性能一定会更好吗？实验发现深度网络出现了退化问题（Degradation problem）：网络深度增加时，网络准确度出现饱和，甚至出现下降。这个现象可以在图3中直观看出来：56层的网络比20层网络效果还要差。这不会是过拟合问题，因为56层网络的训练误差同样高。我们知道深层网络存在着梯度消失或者爆炸的问题，这使得深度学习模型很难训练。但是现在已经存在一些技术手段如BatchNorm来缓解这个问题。因此，出现深度网络的退化问题是非常令人诧异的。</p>
+<p>这个有趣的假设让何博士灵感爆发，他提出了残差学习来解决退化问题。对于一个堆积层结构（几层堆积而成）当输入为 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 时其学习到的特征记为 <img src="https://www.zhihu.com/equation?tex=H%28x%29" alt="[公式]"> ，现在我们希望其可以学习到残差 <img src="https://www.zhihu.com/equation?tex=F%28x%29%3DH%28x%29-x" alt="[公式]"> ，这样其实原始的学习特征是 <img src="https://www.zhihu.com/equation?tex=F%28x%29%2Bx" alt="[公式]"> 。之所以这样是因为残差学习相比原始特征直接学习更容易。当残差为0时，此时堆积层仅仅做了恒等映射，至少网络性能不会下降，实际上残差不会为0，这也会使得堆积层在输入特征基础上学习到新的特征，从而拥有更好的性能。残差学习的结构如图4所示。这有点类似与电路中的“短路”，所以是一种短路连接（shortcut connection）。</p>
+<figure data-type="image" tabindex="2"><img src="https://pic1.zhimg.com/80/v2-252e6d9979a2a91c2d3033b9b73eb69f_1440w.jpg" alt="img"></figure>
+<p>为什么残差学习相对更容易，从直观上看残差学习需要学习的内容少，因为残差一般会比较小，学习难度小点。不过我们可以从数学的角度来分析这个问题，首先残差单元可以表示为：<img src="https://www.zhihu.com/equation?tex=%5Cbegin%7Balign%7D+%26+%7B%7By%7D_%7Bl%7D%7D%3Dh%28%7B%7Bx%7D_%7Bl%7D%7D%29%2BF%28%7B%7Bx%7D_%7Bl%7D%7D%2C%7B%7BW%7D_%7Bl%7D%7D%29+%5C%5C+%26+%7B%7Bx%7D_%7Bl%2B1%7D%7D%3Df%28%7B%7By%7D_%7Bl%7D%7D%29+%5C%5C+%5Cend%7Balign%7D+" alt="[公式]"></p>
+<p>其中 <img src="https://www.zhihu.com/equation?tex=x_%7Bl%7D" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=x_%7Bl%2B1%7D" alt="[公式]"> 分别表示的是第 <img src="https://www.zhihu.com/equation?tex=l" alt="[公式]"> 个残差单元的输入和输出，注意每个残差单元一般包含多层结构。 <img src="https://www.zhihu.com/equation?tex=F" alt="[公式]"> 是残差函数，表示学习到的残差，而 <img src="https://www.zhihu.com/equation?tex=h%28x_%7Bl%7D%29%3Dx_%7Bl%7D" alt="[公式]"> 表示恒等映射， <img src="https://www.zhihu.com/equation?tex=f" alt="[公式]"> 是ReLU激活函数。基于上式，我们求得从浅层 <img src="https://www.zhihu.com/equation?tex=l" alt="[公式]"> 到深层 <img src="https://www.zhihu.com/equation?tex=L" alt="[公式]"> 的学习特征为：<img src="https://www.zhihu.com/equation?tex=%7B%7Bx%7D_%7BL%7D%7D%3D%7B%7Bx%7D_%7Bl%7D%7D%2B%5Csum%5Climits_%7Bi%3Dl%7D%5E%7BL-1%7D%7BF%28%7B%7Bx%7D_%7Bi%7D%7D%7D%2C%7B%7BW%7D_%7Bi%7D%7D%29" alt="[公式]"></p>
+<p>利用链式规则，可以求得反向过程的梯度：</p>
+<figure data-type="image" tabindex="3"><img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+loss%7D%7B%5Cpartial+%7B%7Bx%7D_%7Bl%7D%7D%7D%3D%5Cfrac%7B%5Cpartial+loss%7D%7B%5Cpartial+%7B%7Bx%7D_%7BL%7D%7D%7D%5Ccdot+%5Cfrac%7B%5Cpartial+%7B%7Bx%7D_%7BL%7D%7D%7D%7B%5Cpartial+%7B%7Bx%7D_%7Bl%7D%7D%7D%3D%5Cfrac%7B%5Cpartial+loss%7D%7B%5Cpartial+%7B%7Bx%7D_%7BL%7D%7D%7D%5Ccdot+%5Cleft%28+1%2B%5Cfrac%7B%5Cpartial+%7D%7B%5Cpartial+%7B%7Bx%7D_%7BL%7D%7D%7D%5Csum%5Climits_%7Bi%3Dl%7D%5E%7BL-1%7D%7BF%28%7B%7Bx%7D_%7Bi%7D%7D%2C%7B%7BW%7D_%7Bi%7D%7D%29%7D+%5Cright%29" alt="[公式]"></figure>
+<p>式子的第一个因子 <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+loss%7D%7B%5Cpartial+%7B%7Bx%7D_%7BL%7D%7D%7D" alt="[公式]"> 表示的损失函数到达 <img src="https://www.zhihu.com/equation?tex=L" alt="[公式]"> 的梯度，小括号中的1表明短路机制可以无损地传播梯度，而另外一项残差梯度则需要经过带有weights的层，梯度不是直接传递过来的。残差梯度不会那么巧全为-1，而且就算其比较小，有1的存在也不会导致梯度消失。所以残差学习会更容易。要注意上面的推导并不是严格的证明。</p>
+<h3 id="18特征处理"><strong>18.特征处理</strong></h3>
+<p>单个原始<em>特征</em>（或称为<em>变量</em>）通常属于以下几类之一：</p>
+<ul>
+<li>连续（continuous）特征；</li>
+<li>无序类别（categorical）特征；</li>
+<li>有序类别（ordinal）特征。</li>
+</ul>
+<p><strong>连续特征</strong></p>
+<p>除了归一化（去中心，方差归一），不用做太多特殊处理，可以直接把连续特征扔到模型里使用。</p>
+<p><strong>无序特征</strong></p>
+<p>可以使用<strong>One-hot</strong>（也叫<strong>One-of-k</strong>）的方法把每个无序特征转化为一个数值向量。比如一个无序特征<code>color</code>有三种取值：<code>red</code>，<code>green</code>，<code>blue</code>。那么可以用一个长度为3的向量来表示它，向量中的各个值分别对应于<code>red</code>，<code>green</code>，<code>blue</code>。如：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">color取值</th>
+<th style="text-align:left">向量表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">red</td>
+<td style="text-align:left">(1, 0, 0)</td>
+</tr>
+<tr>
+<td style="text-align:left">green</td>
+<td style="text-align:left">(0, 1, 0)</td>
+</tr>
+<tr>
+<td style="text-align:left">blue</td>
+<td style="text-align:left">(0, 0, 1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>有序特征</strong></p>
+<p>有些特征虽然也像无序特征那样只取限定的几个值，但是这些值之间有顺序的含义。例如一个人的状态<code>status</code>有三种取值：<code>bad</code>, <code>normal</code>, <code>good</code>，显然<code>bad</code> &lt; <code>normal</code> &lt; <code>good</code>。</p>
+<p>当然，对有序特征最简单的处理方式是忽略其中的顺序关系，把它看成无序的，这样我们就可以使用处理无序特征的方式来处理它。在实际问题中，这种处理方式其实用的很多。</p>
+<p>当然有些问题里有序可能会很重要，这时候就不应该把其中的顺序关系丢掉。一般的表达方式如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">status取值</th>
+<th style="text-align:left">向量表示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">bad</td>
+<td style="text-align:left">(1, 0, 0)</td>
+</tr>
+<tr>
+<td style="text-align:left">normal</td>
+<td style="text-align:left">(1, 1, 0)</td>
+</tr>
+<tr>
+<td style="text-align:left">good</td>
+<td style="text-align:left">(1, 1, 1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>方法一：离散化</strong></p>
+<p>最常用的转化方式是对xx做<strong>离散化(discretization)</strong>，也就是把原来的值分段，转化成一个取值为0或1的向量。原始值落在某个段里，向量中此段对应的元素就为1，否则为0。</p>
+<blockquote>
+<p>离散化的目标是yy与转化后向量里的每个元素都保持比较好的线性关系。</p>
+</blockquote>
+<p>比如取离散点{0.5,1.5,2.5}{0.5,1.5,2.5}，通过判断xx属于(−∞,0.5)(−∞,0.5)，[0.5,1.5)[0.5,1.5)，[1.5,2.5)[1.5,2.5)，[2.5,+∞)[2.5,+∞)中哪段来把它离散化为4维的向量。下面是一些例子的离散结果：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">原始值xx</th>
+<th style="text-align:left">离散化后的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0.1</td>
+<td style="text-align:left">(1, 0, 0, 0)</td>
+</tr>
+<tr>
+<td style="text-align:left">1.3</td>
+<td style="text-align:left">(0, 1, 0, 0)</td>
+</tr>
+<tr>
+<td style="text-align:left">3.2</td>
+<td style="text-align:left">(0, 0, 0, 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">5.8</td>
+<td style="text-align:left">(0, 0, 0, 1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>方法二：函数变换</strong></p>
+<p><strong>函数变换</strong>直接把原来的特征通过非线性函数做变换，然后把原来的特征，以及变换后的特征一起加入模型进行训练。常用的变换函数见下表，不过其实你可以尝试任何函数。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">常用非线性函数f(x)f(x)</th>
+<th style="text-align:left">xx的取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">xαxα; α∈(−∞,+∞)α∈(−∞,+∞)</td>
+<td style="text-align:left">(−∞,+∞)(−∞,+∞)</td>
+</tr>
+<tr>
+<td style="text-align:left">log(x)log⁡(x)</td>
+<td style="text-align:left">(0,+∞)(0,+∞)</td>
+</tr>
+<tr>
+<td style="text-align:left">log(x1−x)log⁡(x1−x)</td>
+<td style="text-align:left">(0,1)(0,1)</td>
+</tr>
+</tbody>
+</table>
+<p>这个方法操作起来很简单，但记得对新加入的特征做归一化。</p>
+<p><strong>笛卡尔乘积</strong></p>
+<p>我们可以使用笛卡尔乘积的方式来组合2个或更多个特征。比如有两个类别特征<code>color</code>和<code>light</code>，它们分别可以取值为<code>red</code>，<code>green</code>，<code>blue</code>和<code>on</code>, <code>off</code>。这两个特征各自可以离散化为3维和2维的向量。对它们做笛卡尔乘积转化，就可以组合出长度为6的特征，它们分别对应着原始值对<code>(red, on)</code>，<code>(red, off)</code>，<code>(green, on)</code>，<code>(green, off)</code>，<code>(blue, on)</code>，<code>(blue, off)</code>。下面的矩阵表达方式更清楚地说明了这种组合。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">X</th>
+<th style="text-align:left"><code>on</code></th>
+<th style="text-align:left"><code>off</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>red</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>green</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>blue</code></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<p>对于3个特征的笛卡尔乘积组合，可以表达为立方的形式。更多特征的组合依次类推。 这个方法也可以直接用于连续特征与类别特征之间的组合，只要把连续特征看成是1维的类别特征就好了，这时候组合后特征对应的值就不是0/1了，而是连续特征的取值。</p>
+<p><strong>核方法</strong></p>
+<p>核方法经常作为线性模型的一种推广出现。以线性回归模型为例，它对应的核方法如下：</p>
+<blockquote>
+<p>如果我们把上面模型里的{K(x,xi)}ni=1{K(x,xi)}i=1n看成特征，而θθ看成模型参数的话，上面的模型仍旧是个线性模型。所以可以认为核方法只是特征函数变换的一种方式。</p>
+</blockquote>
+<p>当然，如果把核函数K(xi,xj)K(xi,xj)看成一种相似度的话，那上面的模型就是kNN模型了，或者叫做加权平均模型也可以。</p>
+<p>因为核方法在预测时也要用到训练样本点，耗内存且计算量大，所以在数据量较大的实际问题中用的并不多。</p>
+<h3 id="19限制过拟合"><strong>19.限制过拟合</strong></h3>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2019/07/31/5d413aa9807a775590.jpg" alt="img"></figure>
+<ol>
+<li><strong>如何获取更多的数据，一般有以下几个方法：</strong></li>
+</ol>
+<ul>
+<li>1）从数据源头获取更多数据：这个是容易想到的，例如物体分类，我就再多拍几张照片好了；但是，在很多情况下，大幅增加数据本身就不容易；另外，我们不清楚获取多少数据才算够；</li>
+<li>2）根据当前数据集估计数据分布参数，使用该分布产生更多数据：这个一般不用，因为估计分布参数的过程也会代入抽样误差。</li>
+<li>3）通过一定规则扩充数据，即数据增强（Data Augmentation）。如在物体分类问题里，物体在图像中的位置、姿态、尺度，整体图片明暗度等都不会影响分类结果。我们就可以通过图像平移、翻转、缩放、切割等手段将数据库成倍扩充，以下为具体的方案：</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>使用合适的模型</strong></p>
+<p>2.1 限制权值 Weight Decay</p>
+<p>常用的weight decay有L1和L2正则化，L1较L2能够获得更稀疏的参数，但L1零点不可导。在损失函数中，weight decay是放在正则项（regularization）前面的一个系数，正则项一般指示模型的复杂度，所以weight decay的作用是调节模型复杂度对损失函数的影响，若weight decay很大，则复杂的模型损失函数的值也就大。</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2019/07/29/5d3ec65a09f3139672.jpg" alt="img"></figure>
+<p>2.2 训练时间 Early stopping</p>
+<p>提前停止其实是另一种正则化方法，就是在训练集和验证集上，一次迭代之后计算各自的错误率，当在验证集上的错误率最小，在没开始增大之前停止训练，因为如果接着训练，训练集上的错误率一般是会继续减小的，但验证集上的错误率会上升，这就说明模型的泛化能力开始变差了，出现过拟合问题，及时停止能获得泛化更好的模型。</p>
+<p>2.3 网络结构</p>
+<p>这个很好理解，减少网络的层数、神经元个数等均可以限制网络的拟合能力。</p>
+<p>2.4 增加噪声</p>
+<p>给网络加噪声也有很多方法：</p>
+<p>2.4.1 在输入中加噪声</p>
+<p>噪声会随着网络传播，按照权值的平方放大，并传播到输出层，对误差 Cost 产生影响。在输入中加高斯噪声，会在输出中生成∑iσ2iw2i的干扰项。训练时，减小误差，同时也会对噪声产生的干扰项进行惩罚，达到减小权值的平方的目的，达到与L2 regularization类似的效果（对比公式）。</p>
+<p>2.4.2 在权值上加噪声</p>
+<p>在初始化网络的时候，用0均值的高斯分布作为初始化。Alex Graves 的手写识别 RNN 就是用了这个方法</p>
+<p>2.4.3 对网络的响应加噪声</p>
+<p>如在前向传播过程中，让某些神经元的输出变为 binary 或 random。显然，这种有点乱来的做法会打乱网络的训练过程，让训练更慢，但据 Hinton 说，在测试集上效果会有显著提升 （But it does significantly better on the test set!）。</p>
+</li>
+<li>
+<p><strong>结合多种模型</strong></p>
+<p>3.1 Bagging和Boost</p>
+<p>简单理解，就是分段函数的概念：用不同的模型拟合不同部分的训练集。以随机森林（Rand Forests）为例，就是训练了一堆互不关联的决策树。但由于训练神经网络本身就需要耗费较多自由，所以一般不单独使用神经网络做Bagging。</p>
+<p>3.2 Dropout</p>
+<p>正则是通过在代价函数后面加上正则项来防止模型过拟合的。而在神经网络中，有一种方法是通过修改神经网络本身结构来实现的，其名为Dropout。该方法是在对网络进行训练时用一种技巧（trick）</p>
+<p>在训练时，每次随机（如50%概率）忽略隐层的某些节点；这样，我们相当于随机从2H2H个模型中采样选择模型；同时，由于每个网络只见过一个训练数据（每次都是随机的新网络），所以类似 bagging 的做法，这就是我为什么将它分类到「结合多种模型」中；</p>
+<p>此外，而不同模型之间权值共享（共同使用这 H 个神经元的连接权值），相当于一种权值正则方法，实际效果比 L2 regularization 更好。</p>
+</li>
+</ol>
+<h3 id="20计算机视觉"><strong>20.计算机视觉</strong></h3>
+<p><strong>全卷积网络：</strong></p>
+<p>FCN对图像进行像素级的分类，从而解决了语义级别的图像分割（semantic segmentation）问题。与经典的CNN在卷积层之后使用全连接层得到固定长度的特征向量进行分类（全联接层＋softmax输出）不同，FCN可以接受任意尺寸的输入图像，采用反卷积层对最后一个卷积层的feature map进行上采样, 使它恢复到输入图像相同的尺寸，从而可以对每个像素都产生了一个预测, 同时保留了原始输入图像中的空间信息, 最后在上采样的特征图上进行逐像素分类。</p>
+<p><strong>IoU</strong></p>
+<p>IoU（Intersection over Union），又称重叠度/交并比</p>
+<p><strong>1 NMS</strong>：当在图像中预测多个proposals、pred bboxes时，由于预测的结果间可能存在高冗余（即同一个目标可能被预测多个矩形框），因此可以过滤掉一些彼此间高重合度的结果；具体操作就是根据各个bbox的score降序排序，剔除与高score bbox有较高重合度的低score bbox，那么重合度的度量指标就是IoU；</p>
+<p><strong>2 mAP</strong>：得到检测算法的预测结果后，需要对pred bbox与gt bbox一起评估检测算法的性能，涉及到的评估指标为mAP，那么当一个pred bbox与gt bbox的重合度较高（如IoU score &gt; 0.5），且分类结果也正确时，就可以认为是该pred bbox预测正确，这里也同样涉及到IoU的概念；</p>
+<pre><code>def IOU(rectangle A, rectangleB):
+    W = min(A.RT.x, B.RT.x) - max(A.LB.x, B.LB.x)
+    H = min(A.RT.y, B.RT.y) - max(A.LB.y, B.LB.y)
+    if W &lt;= 0 or H &lt;= 0:
+        return 0;
+    SA = (A.RT.x - A.LB.x) * (A.RT.y - A.LB.y)
+    SB = (B.RT.x - B.LB.x) * (B.RT.y - B.LB.y)
+    cross = W * H
+    return cross/(SA + SB - cross)
+</code></pre>
+<p><strong>目标检测之anchor</strong></p>
+<p>近期顶尖(SOTA)的目标检测方法几乎都用了anchor技术。首先预设一组不同尺度不同位置的固定参考框，覆盖几乎所有位置和尺度，每个参考框负责检测与其交并比大于阈值 (<em>训练预设值，常用0.5或0.7</em>) 的目标，anchor技术将问题转换为**&quot;这个固定参考框中有没有认识的目标，目标框偏离参考框多远&quot;**，不再需要多尺度遍历滑窗，真正实现了又好又快，如在Faster R-CNN和SSD两大主流目标检测框架及扩展算法中anchor都是重要部分。</p>
+<p>Faster R-CNN最早提出了anchor概念，首先，backbone+RPN实质上是一个FCN，上一篇分析过FCN本质上是密集滑窗，所以就没必要显式密集滑窗了；其次，anchor的设置是多尺度的，这样就没必要显式图像金字塔；最后，RPN与检测网络共享backbone部分的计算量，能大幅提升速度；注意，输入图像大小相比后面的SSD（512x512）更大，相当于小目标放大去检测，性能会有提升，但这是牺牲速度换来的。</p>
+<p>Anchor设置方面有三个问题（<em>从今天的算法水平往回看，事后诸葛角度</em>）：</p>
+<ol>
+<li>最小的anchor是128x128尺度，而COCO小目标很多，且小目标很小，远小于这个尺度，为了能检测这些小目标，Faster R-CNN不得不放大输入图像(~1000x600)，<strong>导致</strong>计算速度成倍增加，而同时被放大的大目标可能超过最大anchor尺度，又不得不加入多尺度测试保证从大到小anchor全覆盖，进一步影响速度；</li>
+<li>最大的anchor是512x512尺度，而预测层的感受野仅228，上一篇讨论过，一般来说感受野一定要大于anchor大小，而且越大越好，这里感受野明显不足以支撑最大尺度的anchor，<strong>导致</strong>大尺度目标检测性能不够好；</li>
+<li>三尺度按照检测目标的大小，我们简称为大、中、小锚框，那么三个尺度的anchor分别有63x38x3=<strong>7182</strong>个，共计7182x3=<strong>21546</strong>个anchor。通常anchor需要覆盖训练集的所有目标，即每个groundtruth box都能匹配到一个anchor，因此理想情况下目标越小anchor应该越多越密集，才能覆盖所有的候选区域，目标越大anchor应该越少越稀疏，否则互相高度重叠造成冗余计算量，反观RPN这里的单一feature map三尺度三比例设置，<strong>导致</strong>检测小目标的anchor太少太疏，而检测大目标的anchor太多太密。论文提到Faster R-CNN训练中忽略了所有跨边界的anchor否则训练无法收敛，尺度越大跨边界越多，所以训练中忽略掉的很多都是大锚框。</li>
+</ol>
+<p><strong>faster RCNN为什么用smooth L1：</strong></p>
+<p>为了从两个方面限制梯度：</p>
+<ol>
+<li>当预测框与 ground truth 差别过大时，梯度值不至于过大；</li>
+<li>当预测框与 ground truth 差别很小时，梯度值足够小。</li>
+</ol>
+<figure data-type="image" tabindex="6"><img src="https://www.zhihu.com/equation?tex=%5Cmathrm%7Bsmooth%7D_%7BL_1%7D%28x%29%3D+%5Cbegin%7Bcases%7D+0.5x%5E2%26+%5Ctext%7Bif+%7D+%7Cx%7C%3C1%5C%5C+%7Cx%7C-0.5%26+%5Ctext%7Botherwise%7D+%5Cend%7Bcases%7D%5Ctag%7B3%7D" alt="[公式]"></figure>
+<figure data-type="image" tabindex="7"><img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cmathrm%7Bd%7D%5Cmathrm%7B%5C+smooth%7D_%7BL_1%7D%7D%7B%5Cmathrm%7Bd%7Dx%7D%3D%5Cbegin%7Bcases%7D+%26x+%26%5Ctext%7Bif%7D%5C+%7Cx%7C%3C1%5C%5C+%26%5Cpm1+%26%5Ctext%7Botherwise%7D%5Ctag%7B6%7D++%5Cend%7Bcases%7D" alt="[公式]"></figure>
+<p>最后观察 (6)， <img src="https://www.zhihu.com/equation?tex=%5Cmathrm%7Bsmooth%7D_%7BL_1%7D" alt="[公式]"> 在 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 较小时，对 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 的梯度也会变小，而在 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 很大时，对 <img src="https://www.zhihu.com/equation?tex=x" alt="[公式]"> 的梯度的绝对值达到上限 1，也不会太大以至于破坏网络参数。 <img src="https://www.zhihu.com/equation?tex=%5Cmathrm%7Bsmooth%7D_%7BL_1%7D" alt="[公式]"> 完美地避开了 <img src="https://www.zhihu.com/equation?tex=L_1" alt="[公式]"> 和 <img src="https://www.zhihu.com/equation?tex=L_2" alt="[公式]"> 损失的缺陷。</p>
+<p><a href="https://www.cnblogs.com/skyfsm/p/6806246.html">基于深度学习的目标检测技术演进：R-CNN、Fast R-CNN、Faster R-CNN</a></p>
+<p>object detection我的理解，就是在给定的图片中精确找到物体所在位置，并标注出物体的类别。object detection要解决的问题就是物体在哪里，是什么这整个流程的问题。然而，这个问题可不是那么容易解决的，物体的尺寸变化范围很大，摆放物体的角度，姿态不定，而且可以出现在图片的任何地方，更何况物体还可以是多个类别。</p>
+<p>object detection技术的演进：<br>
+RCNN-&gt;SppNET-&gt;Fast-RCNN-&gt;Faster-RCNN</p>
+<p><strong>总结一下各大算法的步骤：</strong><br>
+RCNN<br>
+　　1. 在图像中确定约1000-2000个候选框 (使用选择性搜索)<br>
+　　2. 每个候选框内图像块缩放至相同大小，并输入到CNN内进行特征提取<br>
+　　3. 对候选框中提取出的特征，使用分类器判别是否属于一个特定类<br>
+　　4. 对于属于某一特征的候选框，用回归器进一步调整其位置</p>
+<p>Fast RCNN<br>
+　　1. 在图像中确定约1000-2000个候选框 (使用选择性搜索)<br>
+　　2. 对整张图片输进CNN，得到feature map<br>
+　　3. 找到每个候选框在feature map上的映射patch，将此patch作为每个候选框的卷积特征输入到SPP layer和之后的层<br>
+　　4. 对候选框中提取出的特征，使用分类器判别是否属于一个特定类<br>
+　　5. 对于属于某一特征的候选框，用回归器进一步调整其位置</p>
+<p>Faster RCNN</p>
+<p>1. 对整张图片输进CNN，得到feature map<br>
+　　2. 卷积特征输入到RPN，得到候选框的特征信息<br>
+　　3. 对候选框中提取出的特征，使用分类器判别是否属于一个特定类<br>
+　　4. 对于属于某一特征的候选框，用回归器进一步调整其位置</p>
+<p><strong>Proposal Layer forward（caffe layer的前传函数）按照以下顺序依次处理：</strong></p>
+<ol>
+<li>再次生成anchors，并对所有的anchors做bbox reg位置回归（注意这里的anchors生成顺序和之前是即完全一致的）</li>
+<li>按照输入的foreground softmax scores由大到小排序anchors，提取前pre_nms_topN(e.g. 6000)个anchors。即提取修正位置后的foreground anchors</li>
+<li>利用feat_stride和im_info将anchors映射回原图，判断fg anchors是否大范围超过边界，剔除严重超出边界fg anchors。</li>
+<li>进行nms（nonmaximum suppression，非极大值抑制）</li>
+<li>再次按照nms后的foreground softmax scores由大到小排序fg anchors，提取前post_nms_topN(e.g. 300)结果作为proposal输出。</li>
+</ol>
+<p>RPN网络结构就介绍到这里，总结起来就是：</p>
+<p><strong>生成anchors -&gt; softmax分类器提取fg anchors -&gt; bbox reg回归fg anchors -&gt; Proposal Layer生成proposals</strong></p>
+<h3 id="21-tensorflow"><strong>21. Tensorflow</strong></h3>
+<p><strong>什么是TensorFlow？</strong></p>
+<p>TensorFlow由两个词Tensor和Flow组成；张量被称为多维数组的数据表示, 流意味着对张量执行的一系列操作。</p>
+<p><strong>你对张量了解多少？</strong></p>
+<p>张量是计算机程序中使用的n维数组的矢量或矩阵的一般化。它代表数字形式的大量数据。互联网上没有其他可用的其他n维数组库, 例如Numpy, 但TensorFlow与那些库不同。它提供了创建张量函数和自动计算导数的方法。</p>
+<p>图形可以在张量中进行所有操作。可以说节点的边缘称为张量。我们需要一个特征向量作为实现Tensor的初始输入。在机器学习中向模型提供对象列表, 这些对象称为特征向量。</p>
+<p><strong>有多少张量？</strong></p>
+<p>可使用三种类型的张量来创建神经网络模型：</p>
+<ul>
+<li>恒定张量<br>
+顾名思义, 常量张量用作常量。他们创建一个接受值且不会更改的节点。可以使用tf.constant创建一个常量。<br>
+tf.constant(value, dtype = None, shape = None, name =’Const’, verify_shape = False)<br>
+它接受五个参数。</li>
+<li>可变张量<br>
+可变张量是提供其当前值作为输出的节点。这意味着它们可以在图形的多次执行中保留其价值。</li>
+<li>占位符张量<br>
+占位符张量比变量至关重要。这些用于以后分配数据。占位符是在执行时馈入其值的节点。假设, 我们有一些依赖于外部数据的网络输入。另外, 我们不希望我们的图形在开发图形时依赖于任何实际值, 因此占位符是有用的数据类型。我们甚至可以构建没有任何数据的图形。<br>
+因此, 占位符不需要任何初始值。他们只需要一个数据类型(例如float32)和张量形状, 因此即使它没有任何存储的值, 该图仍然知道要用什么进行计算。</li>
+</ul>
+<p><strong>TensorFlow有什么优势？</strong></p>
+<p>TensorFlow的一些主要优点如下：</p>
+<ul>
+<li>可以轻松地在CPU和GPU上对其进行培训, 以进行分布式计算。</li>
+<li>它具有自动区分功能。</li>
+<li>它具有平台灵活性。</li>
+<li>它易于定制和开源。</li>
+<li>它对线程, 异步计算和队列具有高级支持。</li>
+</ul>
+<p><strong>列出Tensorflow的一些限制</strong></p>
+<p>TensorFlow有一些限制, 如下所述：</p>
+<ul>
+<li>它不提供对OpenCL(开放计算语言)的支持。</li>
+<li>它需要高级演算和线性代数的先验知识, 以及对机器学习的充分理解。</li>
+<li>如果在相同范围内导入, 则与Theano的GPU内存冲突。</li>
+</ul>
+<p><strong>TensorFlow Architecture的三个工作组件是什么？</strong></p>
+<p>TensorFlow架构分为三个部分：</p>
+<ul>
+<li>预处理数据</li>
+<li>建立模型</li>
+<li>训练和估计模型</li>
+</ul>
+<p><strong>说明将数据加载到TensorFlow中的几种选择。</strong></p>
+<p>在训练机器学习算法之前, 将数据加载到TensorFlow中是第一步。有两种加载数据的方式：</p>
+<ul>
+<li>将数据加载到内存中<br>
+这是最简单的方法。所有数据都作为单个阵列加载到内存中。可以编写与TensorFlow无关的Python代码。</li>
+<li>Tensorflow数据管道<br>
+TensorFlow具有内置的API, 可帮助轻松加载数据, 执行操作以及提供机器学习算法。存在大量数据集时, 通常使用此方法。</li>
+</ul>
+<p><strong>描述大多数TensorFlow算法的通用步骤吗？</strong></p>
+<ul>
+<li>通过占位符导入数据, 生成数据或设置数据管道。</li>
+<li>通过计算图输入数据。</li>
+<li>评估损失函数的输出。</li>
+<li>使用反向传播来修改变量。</li>
+<li>重复直到停止状态。</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://ouyangding.top/post/dp" class="post-title gt-a-link">
+                    DP
+                </a>
+            </div>
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    OUYANGDING | <a href="https://ouyangding.top/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+
+    </div>
+</div>
+</body>
+</html>
